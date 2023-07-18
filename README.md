@@ -25,6 +25,7 @@ docker-compose up -d
 
 3. Open your browser and go to `http://localhost:3000`
 
-# Extensions
+# Configurations
 
 - The image is based on [linuxserver/baseimage-kasmvnc](https://github.com/linuxserver/docker-baseimage-kasmvnc). Checkout the original image for extra configurations.
+- The koreader configurations can be found in `/config/.config/koreader` inside the container.
