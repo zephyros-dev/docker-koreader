@@ -1,0 +1,76 @@
+{
+  "name": "Koreader",
+  "build": {
+    "args": {
+      "USERNAME": "vscode"
+    },
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bierner.markdown-mermaid",
+        "charliermarsh.ruff",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "GitHub.copilot-labs",
+        "GitHub.copilot",
+        "GitHub.vscode-pull-request-github",
+        "mhutchie.git-graph",
+        "ms-azuretools.vscode-docker",
+        "njpwerner.autodocstring",
+        "pascalreitermann93.vscode-yaml-sort",
+        "richie5um2.vscode-sort-json",
+        "samuelcolvin.jinjahtml",
+        "signageos.signageos-vscode-sops",
+        "vivaxy.vscode-conventional-commits",
+        "wholroyd.jinja",
+        "yzhang.markdown-all-in-one"
+      ],
+      "settings": {
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[jsonc]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[python]": {
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+          }
+        },
+        "[yaml]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "editor.codeActionsOnSave": {
+          "source.fixAll.sortJSON": true
+        },
+        "editor.formatOnSave": true,
+        "python.formatting.provider": "black",
+        "python.linting.enabled": false,
+        "sops.creationEnabled": true
+      }
+    }
+  },
+  "onCreateCommand": "python .devcontainer/main.py",
+  "containerUser": "vscode",
+  "remoteEnv": {
+    "EDITOR": "code --wait"
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.config/sops/age/keys.txt,target=/home/vscode/.config/sops/age/keys.txt,type=bind",
+    "source=${localEnv:HOME}/.local/share/fish,target=/home/vscode/.local/share/fish,type=bind",
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind",
+    "source=aqua-bin,target=/home/vscode/.local/share/aquaproj-aqua/bin,type=volume,chown=true",
+    "source=aqua-pkgs,target=/home/vscode/.local/share/aquaproj-aqua/pkgs,type=volume,chown=true",
+    "source=aqua-registries,target=/home/vscode/.local/share/aquaproj-aqua/registries,type=volume,chown=true",
+    "source=vscode-server,target=/home/vscode/.vscode-server,type=volume,chown=true"
+  ],
+  "remoteUser": "vscode",
+  "runArgs": ["--userns=keep-id", "--platform=linux/amd64"],
+  "workspaceFolder": "${localWorkspaceFolder}",
+  "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind"
+}
