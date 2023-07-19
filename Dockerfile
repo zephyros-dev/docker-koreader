@@ -1,6 +1,7 @@
 FROM docker.io/curlimages/curl:latest AS build
+ARG ARCH='dpkg --print-architecture'
 RUN curl -Lo koreader.deb \
-    https://github.com/koreader/koreader/releases/download/v2023.06.1/koreader-2023.06.1-amd64.deb
+    https://github.com/koreader/koreader/releases/download/v2023.06.1/koreader-2023.06.1-${ARCH}.deb
 FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm AS app
 ENV \
     TITLE="Koreader" \
