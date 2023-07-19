@@ -1,7 +1,7 @@
 name: Create and publish a Docker image
 on:
   push:
-    branches: ["zephyros-dev/issue2"]
+    branches: ["main"]
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: zephyros-dev/koreader
