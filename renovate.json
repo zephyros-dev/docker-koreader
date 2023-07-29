@@ -21,8 +21,14 @@
     {
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "aquaproj/aqua",
-      "fileMatch": ["Dockerfile", "helper.py"],
+      "fileMatch": ["Dockerfile"],
       "matchStrings": ["AQUA_VERSION=(?<currentValue>.*?)\n"]
+    },
+    {
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "koreader/koreader",
+      "fileMatch": ["Dockerfile"],
+      "matchStrings": ["KOREADER_VERSION=(?<currentValue>.*?)\n"]
     }
   ],
   "repositories": ["zephyros-dev/media-server"]
