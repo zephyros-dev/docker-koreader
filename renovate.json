@@ -1,0 +1,29 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "automerge": true,
+  "automergeType": "branch",
+  "extends": ["github>aquaproj/aqua-renovate-config#1.7.0"],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "onboarding": false,
+  "pinDigests": true,
+  "pip_requirements": {
+    "fileMatch": ["(^|/)requirements\\.in$"]
+  },
+  "platform": "github",
+  "platformAutomerge": true,
+  "pre-commit": {
+    "enabled": true
+  },
+  "rebaseWhen": "auto",
+  "regexManagers": [
+    {
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "aquaproj/aqua",
+      "fileMatch": ["Dockerfile", "helper.py"],
+      "matchStrings": ["AQUA_VERSION=(?<currentValue>.*?)\n"]
+    }
+  ],
+  "repositories": ["zephyros-dev/media-server"]
+}
