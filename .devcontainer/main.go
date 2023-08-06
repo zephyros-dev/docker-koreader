@@ -8,6 +8,8 @@ import (
 	"regexp"
 	"runtime"
 	"strings"
+
+	"github.com/cuonglm/gogi"
 )
 
 var homedir, _ = os.UserHomeDir()
@@ -19,6 +21,24 @@ func check(err error) {
 		fmt.Printf("err: %s\n", err)
 		panic(err)
 	}
+}
+
+func setupPrecommit() {
+	var cmd *exec.Cmd
+
+	file, err := os.ReadFile("requirements.txt")
+	check(err)
+	requirementsArray := strings.Split(string(file), "\n")
+	requirementsArray = requirementsArray[:len(requirementsArray)-1]
+	for _, requirement := range requirementsArray {
+		cmd := exec.Command("pipx", "install", "--force", requirement)
+		err := cmd.Run()
+		check(err)
+	}
+
+	cmd = exec.Command("pre-commit", "install")
+	err = cmd.Run()
+	check(err)
 }
 
 func installAqua() {
@@ -53,25 +73,9 @@ func installAqua() {
 	log.Println("aqua version", aquaDesiredVersion, "installed")
 }
 
-func main() {
-
-	os.Chdir(".devcontainer")
+func setupAqua() {
 
 	var cmd *exec.Cmd
-
-	file, err := os.ReadFile("requirements.txt")
-	check(err)
-	requirementsArray := strings.Split(string(file), "\n")
-	requirementsArray = requirementsArray[:len(requirementsArray)-1]
-	for _, requirement := range requirementsArray {
-		cmd := exec.Command("pipx", "install", "--force", requirement)
-		err := cmd.Run()
-		check(err)
-	}
-
-	cmd = exec.Command("pre-commit", "install")
-	err = cmd.Run()
-	check(err)
 
 	cmd = exec.Command("aqua", "--version")
 	stdout, err := cmd.Output()
@@ -106,6 +110,22 @@ func main() {
 	cmd.Dir = "../"
 	err = cmd.Run()
 	check(err)
+}
+
+func setupGitginore() {
+	gogiClient, _ := gogi.NewHTTPClient()
+	data, err := gogiClient.Create("go,VisualStudioCode,JetBrains")
+	if err != nil {
+		log.Fatal(err)
+	}
+	os.WriteFile("../.gitignore", []byte(data), 0644)
+}
+
+func main() {
+
+	setupPrecommit()
+	setupAqua()
+	setupGitginore()
 
 	// TODO: add gitginore setup
 }

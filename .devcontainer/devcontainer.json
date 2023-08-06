@@ -26,7 +26,6 @@
         "pascalreitermann93.vscode-yaml-sort",
         "richie5um2.vscode-sort-json",
         "samuelcolvin.jinjahtml",
-        "signageos.signageos-vscode-sops",
         "vivaxy.vscode-conventional-commits",
         "wholroyd.jinja",
         "yzhang.markdown-all-in-one"
@@ -38,25 +37,17 @@
         "[jsonc]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
-        "[python]": {
-          "editor.codeActionsOnSave": {
-            "source.organizeImports": true
-          }
-        },
         "[yaml]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
         "editor.codeActionsOnSave": {
           "source.fixAll.sortJSON": true
         },
-        "editor.formatOnSave": true,
-        "python.formatting.provider": "black",
-        "python.linting.enabled": false,
-        "sops.creationEnabled": true
+        "editor.formatOnSave": true
       }
     }
   },
-  "onCreateCommand": "go run .devcontainer/main.go",
+  "onCreateCommand": "cd .devcontainer && go run .",
   "containerUser": "vscode",
   "remoteEnv": {
     "EDITOR": "code --wait"
@@ -68,7 +59,6 @@
     "source=${devcontainerId}-pip-cache,target=/home/vscode/.cache/pip,type=volume,chown=true",
     "source=${devcontainerId}-pipx,target=/home/vscode/.local/pipx,type=volume,chown=true",
     "source=${devcontainerId}-vscode-server,target=/home/vscode/.vscode-server,type=volume,chown=true",
-    "source=${localEnv:HOME}/.config/sops/age/keys.txt,target=/home/vscode/.config/sops/age/keys.txt,type=bind",
     "source=${localEnv:HOME}/.local/share/fish,target=/home/vscode/.local/share/fish,type=bind",
     "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind"
   ],
