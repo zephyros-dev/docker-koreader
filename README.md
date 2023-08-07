@@ -2,6 +2,11 @@
 
 - Koreader installed in a docker container, accessible via browser.
 
+# Tags
+
+- `latest`: Latest version built on the main branch
+- `Koreader.version`: Specific version of Koreader
+
 # Installation
 
 1. Create a `docker-compose.yaml`

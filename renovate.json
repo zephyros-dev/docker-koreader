@@ -29,6 +29,12 @@
       "depNameTemplate": "koreader/koreader",
       "fileMatch": ["Dockerfile"],
       "matchStrings": ["KOREADER_VERSION=(?<currentValue>.*?)\n"]
+    },
+    {
+      "depNameTemplate": "docker/*",
+      "depTypeTemplate": "action",
+      "groupName": "docker-action",
+      "ignoreTests": true
     }
   ],
   "repositories": ["zephyros-dev/media-server"]

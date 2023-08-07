@@ -8,5 +8,4 @@ registries:
   - type: standard
     ref: v4.31.0 # renovate: depName=aquaproj/aqua-registry
 packages:
-  - name: mozilla/sops@v3.7.3
   - name: golang/go@go1.20.7
