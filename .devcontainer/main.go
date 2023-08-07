@@ -122,10 +122,7 @@ func setupGitginore() {
 }
 
 func main() {
-
 	setupPrecommit()
 	setupAqua()
 	setupGitginore()
-
-	// TODO: add gitginore setup
 }
