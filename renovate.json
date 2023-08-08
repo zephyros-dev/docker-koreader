@@ -9,10 +9,9 @@
   "onboarding": false,
   "packageRules": [
     {
-      "depNameTemplate": "docker/*",
-      "depTypeTemplate": "action",
       "groupName": "docker-action",
-      "ignoreTests": true
+      "ignoreTests": true,
+      "matchPackagePatterns": ["docker"]
     }
   ],
   "pinDigests": true,
