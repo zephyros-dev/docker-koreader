@@ -37,7 +37,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=raw,value=${{ steps.koreader_version.outputs.version }}
       - name: Build and push Docker image
-        uses: docker/build-push-action@b1d46f11a21966f79dea009399bc7c283de42d36
+        uses: docker/build-push-action@b1654941ef2641282e38f9466a96c282c83dd001
         with:
           context: .
           push: true
