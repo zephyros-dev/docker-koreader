@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm@sha256:4e0b31ff203f6d28a9bfff98f215f4e5c3a22f393f13bf19a4810f62417d5ba0
+FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm@sha256:a807e2a50b2f7642e99dbc6d7ad5de148c7888caf3897af2f0c5bec2870ff5b8
 ARG KOREADER_VERSION="2023.06.1"
 ARG ARCH='dpkg --print-architecture'
 ENV \
