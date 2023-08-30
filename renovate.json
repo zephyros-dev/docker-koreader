@@ -40,7 +40,7 @@
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "koreader/koreader",
       "fileMatch": ["Dockerfile"],
-      "matchStrings": ["KOREADER_VERSION=(?<currentValue>.*?)\n"]
+      "matchStrings": ["ARG KOREADER_VERSION=(?<currentValue>.*?)\n"]
     }
   ],
   "repositories": ["zephyros-dev/media-server"]
