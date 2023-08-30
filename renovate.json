@@ -37,7 +37,7 @@
       "matchStrings": ["AQUA_VERSION=(?<currentValue>.*?)\n"]
     },
     {
-      "datasourceTemplate": "github-releases",
+      "datasourceTemplate": "github-tags",
       "depNameTemplate": "koreader/koreader",
       "fileMatch": ["Dockerfile"],
       "matchStrings": ["KOREADER_VERSION=(?<currentValue>.*?)\n"]
