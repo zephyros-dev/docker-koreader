@@ -1,5 +1,5 @@
 FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm@sha256:57f6223e2e18af50871439dc96fdd0d2f8121ce9de650466198e87d61ab155be
-ARG KOREADER_VERSION="2023.06.1"
+ARG KOREADER_VERSION=2023.06.1
 ARG ARCH='dpkg --print-architecture'
 ENV \
     TITLE="Koreader" \
