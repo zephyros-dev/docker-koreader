@@ -1,9 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "ignoreTests": true,
   "automerge": true,
   "automergeType": "branch",
   "extends": ["github>aquaproj/aqua-renovate-config#1.8.0"],
+  "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true
   },
@@ -36,7 +36,8 @@
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "koreader/koreader",
       "fileMatch": ["Dockerfile"],
-      "matchStrings": ["KOREADER_VERSION=(?<currentValue>.*?)\n"]
+      "matchStrings": ["KOREADER_VERSION=(?<currentValue>.*?)\n"],
+      "version": "^(?<major>\\d+)(\\.0*(?<minor>\\d+))?(\\.(?<patch>\\d+))"
     }
   ],
   "repositories": ["zephyros-dev/media-server"]
