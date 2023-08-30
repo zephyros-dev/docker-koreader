@@ -15,7 +15,7 @@
       "matchPackagePatterns": ["docker"]
     },
     {
-      "matchDepNames": ["koreader/koreader"],
+      "matchDepNames": ["https://github.com/koreader/koreader.git"],
       "versioning": "regex:^(?<major>\\d+)(\\.0?(?<minor>\\d+))(\\.(?<patch>\\d+))?"
     }
   ],
