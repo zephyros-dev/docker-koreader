@@ -16,7 +16,7 @@
     },
     {
       "matchDepNames": ["koreader/koreader"],
-      "versioning": "regex:^(?<major>\\d+)(\\.0*(?<minor>\\d+))?(\\.(?<patch>\\d+))"
+      "versioning": "regex:^(?<major>\\d+)(\\.0?(?<minor>\\d+))(\\.(?<patch>\\d+))?"
     }
   ],
   "pinDigests": true,
