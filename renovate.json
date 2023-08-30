@@ -16,7 +16,7 @@
     },
     {
       "matchDepNames": ["https://github.com/koreader/koreader.git"],
-      "versioning": "regex:^(?<major>\\d+)(\\.0?(?<minor>\\d+))(\\.(?<patch>\\d+))?"
+      "versioning": "regex:^v(?<major>\\d+)(\\.0?(?<minor>\\d+))(\\.(?<patch>\\d+))?"
     }
   ],
   "pinDigests": true,
