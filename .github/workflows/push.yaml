@@ -4,7 +4,7 @@ on:
     branches: ["main"]
     paths:
       - Dockerfile
-      - .github/workflows
+      - .github/workflows/*
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: zephyros-dev/koreader
@@ -29,7 +29,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Get Koreader version
         id: koreader_version
-        run: echo "version=$(cat Dockerfile | grep -oP '(?<=KOREADER_VERSION=").*(?=")')" >> $GITHUB_OUTPUT
+        run: echo "version=$(cat Dockerfile | grep -oP '(?<=ARG KOREADER_VERSION=).+(?=)')" >> $GITHUB_OUTPUT
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@0f8c876bafbf5dbce05c36682ec68e9a0274a48a
