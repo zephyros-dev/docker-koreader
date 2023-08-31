@@ -34,3 +34,15 @@ docker-compose up -d
 
 - The image is based on [linuxserver/baseimage-kasmvnc](https://github.com/linuxserver/docker-baseimage-kasmvnc). Checkout the original image for extra configurations.
 - The koreader configurations can be found in `/config/.config/koreader` inside the container.
+
+## Renovate autoupdate
+
+- For user with that use renovate for autoupdate, add this to the renovate configuration for the autoupdate to work:
+
+```
+{
+    "extends": ["github>zephyros-dev/docker-koreader"],
+}
+```
+
+- Then use the specific version of koreader as the tag in the image specification. .e.g: `v2023.06.1`
