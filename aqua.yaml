@@ -6,6 +6,6 @@
 #   require_checksum: true
 registries:
   - type: standard
-    ref: v4.43.0 # renovate: depName=aquaproj/aqua-registry
+    ref: v4.43.1 # renovate: depName=aquaproj/aqua-registry
 packages:
   - name: golang/go@go1.21.0
