@@ -22,7 +22,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@885d1462b80bc1c1c7f0b00334ad271f09369c55 # v2
       - name: Log in to the Container registry
-        uses: docker/login-action@98341b6c681c0f5ecc8660fbfa958a1ef8e20bd8
+        uses: docker/login-action@a5609cb39f57be157c39b77359abfaa43aeaeb8f
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -32,7 +32,7 @@ jobs:
         run: echo "version=$(cat Dockerfile | grep -oP '(?<=ARG KOREADER_VERSION=).+(?=)')" >> $GITHUB_OUTPUT
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@4af6ba2231b85910f31d3a870d0787273d7cffc3
+        uses: docker/metadata-action@b67fef219a3c5542bf1d0948862a08152653b4d4
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
@@ -40,7 +40,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=raw,value=${{ steps.koreader_version.outputs.version }}
       - name: Build and push Docker image
-        uses: docker/build-push-action@daa0106f78eed71cdc2a900489ce515acedeef64
+        uses: docker/build-push-action@4e4ee680f69700760d5620a94c020aef883043aa
         with:
           context: .
           push: true
