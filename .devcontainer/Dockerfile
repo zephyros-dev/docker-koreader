@@ -21,5 +21,5 @@ RUN mkdir -p \
     ~/.local/share/fish \
     ~/.ssh
 
-ENV AQUA_VERSION=v2.10.1
+ENV AQUA_VERSION=v2.11.0
 ENV PATH=/home/${USERNAME}/.local/share/aquaproj-aqua/bin:/home/${USERNAME}/node_modules/.bin:$PATH
