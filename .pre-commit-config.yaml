@@ -18,6 +18,6 @@ repos:
     hooks:
       - id: yamlfmt
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 36.105.0
+    rev: 36.106.1
     hooks:
       - id: renovate-config-validator
