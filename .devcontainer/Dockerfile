@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/go:1.22-bookworm@sha256:31301a00830271959b58fbdb144c1f0d91d91ba527b90c0951d912fe939c1d48
+FROM mcr.microsoft.com/devcontainers/go:1.22-bookworm@sha256:7e6a53ddcf7790ac77cccd0d1f082fda198ddd4c58af84ed437a186d19fb94d1
 
 RUN rm -f /etc/apt/apt.conf.d/docker-clean; echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
