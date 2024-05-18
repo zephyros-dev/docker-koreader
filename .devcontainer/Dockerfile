@@ -7,7 +7,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     && apt install -y --no-install-recommends \
     fish \
     podman \
-    podman-docker
+    podman-docker \
+    docker-compose
 
 ARG USERNAME
 ARG UID=1000
