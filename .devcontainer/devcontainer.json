@@ -1,14 +1,11 @@
 {
-  "name": "Koreader",
   "build": {
     "args": {
       "USERNAME": "vscode"
     },
     "dockerfile": "Dockerfile"
   },
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2@sha256:503f23cd692325b3cbb8c20a0ecfabb3444b0c786b363e0c82572bd7d71dc099": {}
-  },
+  "containerUser": "vscode",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -41,16 +38,11 @@
           "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
         "editor.codeActionsOnSave": {
-          "source.fixAll.sortJSON": true
+          "source.fixAll.sortJSON": "always"
         },
         "editor.formatOnSave": true
       }
     }
-  },
-  "onCreateCommand": "cd .devcontainer && go run .",
-  "containerUser": "vscode",
-  "remoteEnv": {
-    "EDITOR": "code --wait"
   },
   "mounts": [
     "source=${devcontainerId}-aqua-bin,target=/home/vscode/.local/share/aquaproj-aqua/bin,type=volume,chown=true",
@@ -58,12 +50,18 @@
     "source=${devcontainerId}-aqua-registries,target=/home/vscode/.local/share/aquaproj-aqua/registries,type=volume,chown=true",
     "source=${devcontainerId}-pip-cache,target=/home/vscode/.cache/pip,type=volume,chown=true",
     "source=${devcontainerId}-pipx,target=/home/vscode/.local/pipx,type=volume,chown=true",
-    "source=${devcontainerId}-vscode-server,target=/home/vscode/.vscode-server,type=volume,chown=true",
     "source=${localEnv:HOME}/.local/share/fish,target=/home/vscode/.local/share/fish,type=bind",
+    "source=${localEnv:XDG_RUNTIME_DIR}/podman/podman.sock,target=/run/user/1000/podman/podman.sock,type=bind",
     "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind"
   ],
+  "name": "Koreader",
+  "remoteEnv": {
+    "CONTAINER_HOST": "unix:///run/user/1000/podman/podman.sock",
+    "DOCKER_HOST": "unix:///run/user/1000/podman/podman.sock",
+    "EDITOR": "code --wait"
+  },
   "remoteUser": "vscode",
-  "runArgs": ["--userns=keep-id", "--platform=linux/amd64"],
+  "runArgs": ["--userns=keep-id", "--privileged"],
   "workspaceFolder": "${localWorkspaceFolder}",
   "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind"
 }
