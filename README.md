@@ -4,23 +4,13 @@
 
 # Tags
 
+- The image name is `ghcr.io/zephyros-dev/koreader`. The following tags are supported:
 - `latest`: Latest version built on the main branch
-- `Koreader.version`: Specific version of Koreader
+- `Koreader.version`: Specific version of Koreader. e.g: `v2023.06.1`
 
 # Installation
 
-1. Create a `docker-compose.yaml`
-
-```
-services:
-  koreader:
-    image: ghcr.io/zephyros-dev/koreader:latest
-    ports:
-      - "3000:3000"
-    volumes:
-      # Persistent storage
-      - ./config:/config
-```
+1. Create a `docker-compose.yaml`. Checkout the [docker-compose.yaml](docker-compose.yaml) for example.
 
 2. Run the following command to start the container
 

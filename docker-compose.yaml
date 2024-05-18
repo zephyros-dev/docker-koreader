@@ -1,5 +1,10 @@
 services:
   koreader:
-    build: .
+    image: ghcr.io/zephyros-dev/koreader:latest
+    build: . # Remove this line if you only use the image from the registry
     ports:
       - "3000:3000"
+    volumes:
+      - ./config:/config # Persistent storage
+    cap_add:
+      - CAP_NET_RAW # Required for some network options like calibre
