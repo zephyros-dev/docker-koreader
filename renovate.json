@@ -14,18 +14,10 @@
   "packageRules": [
     {
       "groupName": "docker-action",
-      "ignoreTests": true,
-      "matchPackagePatterns": [
-        "docker"
-      ]
+      "matchPackagePatterns": ["docker"]
     }
   ],
   "pinDigests": true,
-  "pip_requirements": {
-    "fileMatch": [
-      "(^|/)requirements\\.in$"
-    ]
-  },
   "platform": "github",
   "platformAutomerge": true,
   "pre-commit": {
@@ -36,15 +28,8 @@
     {
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "koreader/koreader",
-      "fileMatch": [
-        "Dockerfile"
-      ],
-      "matchStrings": [
-        "ARG KOREADER_VERSION=(?<currentValue>.*?)\n"
-      ]
+      "fileMatch": ["Dockerfile"],
+      "matchStrings": ["ARG KOREADER_VERSION=(?<currentValue>.*?)\n"]
     }
-  ],
-  "repositories": [
-    "zephyros-dev/media-server"
   ]
 }
