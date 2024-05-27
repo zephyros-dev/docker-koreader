@@ -22,7 +22,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@d70bba72b1f3fd22344832f00baa16ece964efeb # v3
       - name: Log in to the Container registry
-        uses: docker/login-action@70fccc794acd729b2b22dd6a326895f286447728
+        uses: docker/login-action@db779458846adfddbc884a8e8b86376e277d24b2
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -40,7 +40,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=raw,value=${{ steps.koreader_version.outputs.version }}
       - name: Build and push Docker image
-        uses: docker/build-push-action@2a53c6ccda456d31fb62eedc658aae06e238b7bd
+        uses: docker/build-push-action@ef6cba335306ace1da064b44f9f739dec9be9fa0
         with:
           context: .
           push: true
