@@ -2,10 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "automerge": true,
   "automergeType": "branch",
-  "extends": [
-    "github>aquaproj/aqua-renovate-config#2.3.1",
-    "github>zephyros-dev/docker-koreader"
-  ],
+  "extends": ["github>zephyros-dev/docker-koreader"],
   "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true
@@ -15,6 +12,10 @@
     {
       "groupName": "docker-action",
       "matchPackagePatterns": ["docker"]
+    },
+    {
+      "matchPackagePatterns": ["renovate"],
+      "schedule": ["before 4am on the first day of the month"]
     }
   ],
   "pinDigests": true,
