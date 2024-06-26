@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm@sha256:ed5feecc82fef291995ff99442e00e6f445a5ebf2ddc2a967562192c2935fe44
+FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm@sha256:7de9480bbfd4dc79a0b1736d29c4de2a66bc0c898afe3ea8f8f397608addaaa7
 ARG ARCH='dpkg --print-architecture'
 ARG KOREADER_VERSION=v2024.04
 ARG KOREADER_VERSION_CONVERT="echo $KOREADER_VERSION | sed 's/v//'"
