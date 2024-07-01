@@ -10,21 +10,15 @@
     "vscode": {
       "extensions": [
         "bierner.markdown-mermaid",
-        "charliermarsh.ruff",
         "eamodio.gitlens",
         "esbenp.prettier-vscode",
-        "GitHub.copilot-labs",
         "GitHub.copilot",
         "GitHub.vscode-pull-request-github",
-        "golang.go",
         "mhutchie.git-graph",
         "ms-azuretools.vscode-docker",
-        "njpwerner.autodocstring",
         "pascalreitermann93.vscode-yaml-sort",
         "richie5um2.vscode-sort-json",
-        "samuelcolvin.jinjahtml",
         "vivaxy.vscode-conventional-commits",
-        "wholroyd.jinja",
         "yzhang.markdown-all-in-one"
       ],
       "settings": {
@@ -45,11 +39,6 @@
     }
   },
   "mounts": [
-    "source=${devcontainerId}-aqua-bin,target=/home/vscode/.local/share/aquaproj-aqua/bin,type=volume,chown=true",
-    "source=${devcontainerId}-aqua-pkgs,target=/home/vscode/.local/share/aquaproj-aqua/pkgs,type=volume,chown=true",
-    "source=${devcontainerId}-aqua-registries,target=/home/vscode/.local/share/aquaproj-aqua/registries,type=volume,chown=true",
-    "source=${devcontainerId}-pip-cache,target=/home/vscode/.cache/pip,type=volume,chown=true",
-    "source=${devcontainerId}-pipx,target=/home/vscode/.local/pipx,type=volume,chown=true",
     "source=${localEnv:HOME}/.local/share/fish,target=/home/vscode/.local/share/fish,type=bind",
     "source=${localEnv:XDG_RUNTIME_DIR}/podman/podman.sock,target=/run/user/1000/podman/podman.sock,type=bind",
     "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind"
