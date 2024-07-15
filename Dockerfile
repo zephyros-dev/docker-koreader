@@ -1,6 +1,6 @@
 FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm@sha256:bd4b8d3a1e28daeecc08fd90fb482ff0a1e7d959c0c84ed3f7dbf01c66ae696a
 ARG ARCH='dpkg --print-architecture'
-ARG KOREADER_VERSION=v2024.04
+ARG KOREADER_VERSION=v2024.07
 ARG KOREADER_VERSION_CONVERT="echo $KOREADER_VERSION | sed 's/v//'"
 ENV \
     TITLE="Koreader" \
