@@ -7,7 +7,7 @@ RUN \
     https://github.com/koreader/koreader/releases/download/${KOREADER_VERSION}/koreader-linux-${ARCH}-${KOREADER_VERSION}.tar.xz \
     && tar -xf koreader.tar.xz
 
-FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm@sha256:bd4b8d3a1e28daeecc08fd90fb482ff0a1e7d959c0c84ed3f7dbf01c66ae696a as base
+FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm@sha256:5959b64a3f8c079e105e6ad57b7f554c12bf44f7df2ae1c4c627905c27b51e24 as base
 ENV \
     TITLE="Koreader" \
     START_DOCKER=false
