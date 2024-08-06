@@ -3,7 +3,6 @@
   "automerge": true,
   "automergeType": "branch",
   "extends": ["github>zephyros-dev/docker-koreader"],
-  "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true
   },

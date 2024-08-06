@@ -1,7 +1,8 @@
 name: Build
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
     paths:
       - Dockerfile
 env:
@@ -9,6 +10,8 @@ env:
   IMAGE_NAME: zephyros-dev/koreader
 jobs:
   build-and-push-image:
+    # https://stackoverflow.com/questions/70377390/is-there-any-way-to-trigger-a-specific-github-action-workflow-by-commit-message
+    if: "!contains(github.event.head_commit.message, 'curl')" # Do not run if it only updates the curl version
     runs-on: ubuntu-latest
     permissions:
       contents: read
