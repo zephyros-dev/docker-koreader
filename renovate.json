@@ -3,11 +3,16 @@
   "automerge": true,
   "automergeType": "branch",
   "extends": ["github>zephyros-dev/docker-koreader"],
+  "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true
   },
   "onboarding": false,
   "packageRules": [
+    {
+      "ignoreTests": false,
+      "matchPackagePatterns": "koreader"
+    },
     {
       "groupName": "docker-action",
       "matchPackagePatterns": ["docker"]
