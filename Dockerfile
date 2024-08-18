@@ -1,4 +1,4 @@
-FROM docker.io/curlimages/curl:8.9.1@sha256:8addc281f0ea517409209f76832b6ddc2cabc3264feb1ebbec2a2521ffad24e4 as curl
+FROM docker.io/curlimages/curl:8.9.1@sha256:8addc281f0ea517409209f76832b6ddc2cabc3264feb1ebbec2a2521ffad24e4 AS curl
 ARG ARCH='uname -m'
 ARG KOREADER_VERSION=v2024.07
 RUN \
@@ -7,7 +7,7 @@ RUN \
     https://github.com/koreader/koreader/releases/download/${KOREADER_VERSION}/koreader-linux-${ARCH}-${KOREADER_VERSION}.tar.xz \
     && tar -xf koreader.tar.xz
 
-FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm@sha256:890ad38c71c1004709f2154897e826eba26ccc62a334f8ea700f954558d38780 as base
+FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm@sha256:890ad38c71c1004709f2154897e826eba26ccc62a334f8ea700f954558d38780 AS base
 ENV \
     TITLE="Koreader" \
     START_DOCKER=false
