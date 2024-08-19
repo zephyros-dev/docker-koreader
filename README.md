@@ -1,6 +1,6 @@
-[![Latest](https://ghcr-badge.egpl.dev/zephyros-dev/koreader/latest_tag?color=%2344cc11&ignore=latest&label=latest&trim=)](https://github.com/zephyros-dev/docker-koreader/pkgs/container/koreader)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/zephyros-dev/docker-koreader/.github%2Fworkflows%2Fbuild.yaml)
-[![Tags](https://ghcr-badge.egpl.dev/zephyros-dev/koreader/tags?color=%2344cc11&ignore=latest&n=3&label=tags&trim=)](https://github.com/zephyros-dev/docker-koreader/pkgs/container/koreader)
+[![Build](https://github.com/zephyros-dev/docker-koreader/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/zephyros-dev/docker-koreader/actions/workflows/build.yaml)
+[![Latest](https://ghcr-badge.egpl.dev/zephyros-dev/koreader/latest_tag?color=%2344cc11&ignore=latest&label=Latest&trim=)](https://github.com/zephyros-dev/docker-koreader/pkgs/container/koreader)
+[![Tags](https://ghcr-badge.egpl.dev/zephyros-dev/koreader/tags?color=%2344cc11&ignore=latest&n=3&label=Tags&trim=)](https://github.com/zephyros-dev/docker-koreader/pkgs/container/koreader)
 
 # Description
 
