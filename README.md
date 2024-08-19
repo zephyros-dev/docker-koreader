@@ -1,3 +1,7 @@
+[![Latest](https://ghcr-badge.egpl.dev/zephyros-dev/koreader/latest_tag?color=%2344cc11&ignore=latest&label=latest&trim=)](https://github.com/zephyros-dev/docker-koreader/pkgs/container/koreader)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/zephyros-dev/docker-koreader/.github%2Fworkflows%2Fbuild.yaml)
+[![Tags](https://ghcr-badge.egpl.dev/zephyros-dev/koreader/tags?color=%2344cc11&ignore=latest&n=3&label=tags&trim=)](https://github.com/zephyros-dev/docker-koreader/pkgs/container/koreader)
+
 # Description
 
 - Koreader installed in a docker container, accessible via browser.
@@ -22,7 +26,7 @@ docker-compose up -d
 
 # Configurations
 
-- The image is based on [linuxserver/baseimage-kasmvnc](https://github.com/linuxserver/docker-baseimage-kasmvnc). Checkout the original image for extra configurations.
+- The image is based on [linuxserver/baseimage-kasmvnc](https://github.com/linuxserver/docker-baseimage-kasmvnc). Checkout the base image for extra configurations.
 - The koreader configurations can be found in `/config/.config/koreader` inside the container.
 
 ## Renovate autoupdate
