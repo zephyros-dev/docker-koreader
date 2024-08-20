@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:3.12-bookworm@sha256:214b75e54f135f3df65e4e37bc203c4a872514f720e15922d75232195cc02b1d
+FROM mcr.microsoft.com/devcontainers/python:3.12-bookworm@sha256:3f630cfc7a9e7b3073601535de80ea8193f3257a96a7e430b327942af4d9b575
 
 RUN rm -f /etc/apt/apt.conf.d/docker-clean; echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
