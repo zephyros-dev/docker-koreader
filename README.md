@@ -31,7 +31,7 @@ docker-compose up -d
 
 ## Renovate autoupdate
 
-- For user using [renovate](https://github.com/renovatebot/renovate), add this to the renovate configuration for the tags auto-update:
+- For [renovate user](https://github.com/renovatebot/renovate), add this to the renovate configuration for the tags auto-update:
 
 ```
 {
