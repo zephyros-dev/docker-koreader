@@ -31,12 +31,10 @@ docker-compose up -d
 
 ## Renovate autoupdate
 
-- For user with that use renovate for autoupdate, add this to the renovate configuration for the autoupdate to work:
+- For user using renovate[https://github.com/renovatebot/renovate], add this to the renovate configuration for the tags auto-update:
 
 ```
 {
     "extends": ["github>zephyros-dev/docker-koreader"],
 }
 ```
-
-- Then use the specific version of koreader as the tag in the image specification. .e.g: `v2023.06.1`
