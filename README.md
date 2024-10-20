@@ -26,7 +26,7 @@ docker-compose up -d
 
 # Configurations
 
-- The image is based on [linuxserver/baseimage-kasmvnc](https://github.com/linuxserver/docker-baseimage-kasmvnc). Checkout the base image for extra configurations.
+- The image is based on [linuxserver/baseimage-kasmvnc](https://github.com/linuxserver/docker-baseimage-kasmvnc). See the base image for more configurations options.
 - The koreader configurations can be found in `/config/.config/koreader` inside the container.
 
 ## Renovate autoupdate
