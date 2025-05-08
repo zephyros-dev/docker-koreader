@@ -7,7 +7,6 @@
   "lockFileMaintenance": {
     "enabled": true
   },
-  "onboarding": false,
   "packageRules": [
     {
       "ignoreTests": false,
@@ -19,11 +18,10 @@
     },
     {
       "matchPackagePatterns": ["renovate"],
-      "schedule": ["before 4am on the first day of the month"]
+      "schedule": ["* 16 * * 0"]
     }
   ],
   "pinDigests": true,
-  "platform": "github",
   "platformAutomerge": true,
   "pre-commit": {
     "enabled": true
