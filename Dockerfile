@@ -24,5 +24,5 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 COPY --from=curl /home/curl_user/bin/koreader /usr/bin/koreader
 COPY --from=curl /home/curl_user/lib/koreader /usr/lib/koreader
 COPY --from=curl /home/curl_user/share/pixmaps/koreader.png /kclient/public/favicon.ico
-COPY /root /
+RUN echo koreader > /root/defaults/autostart
 EXPOSE 3000
