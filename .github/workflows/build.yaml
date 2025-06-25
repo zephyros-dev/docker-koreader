@@ -34,7 +34,7 @@ jobs:
         run: echo "version=$(cat Dockerfile | grep -oP '(?<=ARG KOREADER_VERSION=).+(?=)')" >> $GITHUB_OUTPUT
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@b798ed8388581f6f002541048b6458ca2c4ba442
+        uses: docker/metadata-action@be19121bfd18b9c1ac415d9571d4f67b9b357886
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
