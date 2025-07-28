@@ -3,8 +3,19 @@ services:
     image: ghcr.io/zephyros-dev/koreader:latest
     build: . # Remove this line if you only use the image from the registry
     ports:
-      - "3000:3000"
-    volumes:
-      - ./volume/config:/config # Persistent storage
+      - "3000-3001:3000-3001"
+    # volumes:
+    #   - ./volume/config:/config # Persistent storage
+    # # For hardware acceleration, check out the base image documentations:
+    # # https://github.com/linuxserver/docker-baseimage-selkies?tab=readme-ov-file#dri3-gpu-acceleration
+    # devices:
+    #   - /dev/dri:/dev/dri
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
     cap_add:
       - CAP_NET_RAW # Required for some network options like calibre

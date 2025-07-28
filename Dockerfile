@@ -7,10 +7,11 @@ RUN \
     https://github.com/koreader/koreader/releases/download/${KOREADER_VERSION}/koreader-linux-${ARCH}-${KOREADER_VERSION}.tar.xz \
     && tar -xf koreader.tar.xz
 
-FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm@sha256:c6129530811450448ab760064b27e111fb3351fc3222af652f605a48eb518ed7 AS base
+FROM ghcr.io/linuxserver/baseimage-selkies:debianbookworm@sha256:c9fa15909b29fb841720c08aa1bccdaaee8cc1e6e5dca325b52a92a2c0e330b6 AS base
 ENV \
     TITLE="Koreader" \
-    START_DOCKER=false
+    START_DOCKER=false \
+    NO_GAMEPAD=true
 RUN rm -f /etc/apt/apt.conf.d/docker-clean; echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
@@ -18,11 +19,11 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     && apt install -y \
     # For network connectivity
     iputils-ping \
-    libsdl2-dev \
+    libsdl2-2.0-0 \
     # Set application to fullscreen
     && sed -i 's|</applications>|  <application class="*">\n <fullscreen>yes</fullscreen>\n </application>\n</applications>|' /etc/xdg/openbox/rc.xml
 COPY --from=curl /home/curl_user/bin/koreader /usr/bin/koreader
 COPY --from=curl /home/curl_user/lib/koreader /usr/lib/koreader
-COPY --from=curl /home/curl_user/share/pixmaps/koreader.png /kclient/public/favicon.ico
-RUN mkdir -p /root/defaults/ && echo koreader > /root/defaults/autostart
+COPY --from=curl /home/curl_user/share/pixmaps/koreader.png /usr/share/selkies/www/icon.png
+RUN echo koreader > /defaults/autostart
 EXPOSE 3000
