@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - Dockerfile
+      - .github/workflows/build.yaml
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: zephyros-dev/koreader
