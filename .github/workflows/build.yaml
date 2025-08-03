@@ -33,6 +33,26 @@ jobs:
       - name: Get Koreader version
         id: koreader_version
         run: echo "version=$(cat Dockerfile | grep -oP '(?<=ARG KOREADER_VERSION=).+(?=)')" >> $GITHUB_OUTPUT
+      - name: Get fedora version
+        id: fedora_version
+        run: echo "version=$(cat Dockerfile | grep -oP '(?<=fedora).+(?=@)')" >> $GITHUB_OUTPUT
+      - name: Extract metadata (tags, labels) for Docker fedora
+        id: meta_fedora
+        uses: docker/metadata-action@c1e51972afc2121e065aed6d45c65596fe445f3f
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            # set latest tag for default branch
+            type=raw,value=${{ steps.koreader_version.outputs.version }}-fedora{{ steps.fedora_version.outputs.version }}
+      - name: Build and push Docker image fedora
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
+        with:
+          context: .
+          push: true
+          platforms: linux/amd64, linux/arm64
+          target: fedora
+          tags: ${{ steps.meta_fedora.outputs.tags }}
+          labels: ${{ steps.meta_fedora.outputs.labels }}
       - name: Get debian version
         id: debian_version
         run: echo "version=$(cat Dockerfile | grep -oP '(?<=debian).+(?=@)')" >> $GITHUB_OUTPUT
@@ -54,23 +74,3 @@ jobs:
           platforms: linux/amd64, linux/arm64
           tags: ${{ steps.meta_debian.outputs.tags }}
           labels: ${{ steps.meta_debian.outputs.labels }}
-      - name: Get fedora version
-        id: fedora_version
-        run: echo "version=$(cat Dockerfile | grep -oP '(?<=fedora).+(?=@)')" >> $GITHUB_OUTPUT
-      - name: Extract metadata (tags, labels) for Docker fedora
-        id: meta_fedora
-        uses: docker/metadata-action@c1e51972afc2121e065aed6d45c65596fe445f3f
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            # set latest tag for default branch
-            type=raw,value=${{ steps.koreader_version.outputs.version }}-fedora{{ steps.fedora_version.outputs.version }}
-      - name: Build and push Docker image fedora
-        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
-        with:
-          context: .
-          push: true
-          platforms: linux/amd64, linux/arm64
-          target: fedora
-          tags: ${{ steps.meta_fedora.outputs.tags }}
-          labels: ${{ steps.meta_fedora.outputs.labels }}
