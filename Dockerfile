@@ -7,7 +7,22 @@ RUN \
     https://github.com/koreader/koreader/releases/download/${KOREADER_VERSION}/koreader-linux-${ARCH}-${KOREADER_VERSION}.tar.xz \
     && tar -xf koreader.tar.xz
 
-FROM ghcr.io/linuxserver/baseimage-selkies:debianbookworm@sha256:ff341d2de5ece02212cd5bdb94058d1e3ae4c73e1dd57dc67a62901796ad09b5 AS base
+FROM ghcr.io/linuxserver/baseimage-selkies:fedora42@sha256:5d6b9b21e7583028a18d23b3b8b9b25b3ff13831587a1c1cc74e6eda4e493d43 AS fedora
+ENV \
+    TITLE="Koreader" \
+    START_DOCKER=false \
+    NO_GAMEPAD=true
+RUN --mount=type=cache,target=/var/cache/libdnf5,sharing=locked \
+    dnf install -y \
+    iputils \
+    && sed -i 's|</applications>|  <application class="*">\n <fullscreen>yes</fullscreen>\n </application>\n</applications>|' /etc/xdg/openbox/rc.xml \
+    && echo koreader > /defaults/autostart
+COPY --from=curl /home/curl_user/bin/koreader /usr/bin/koreader
+COPY --from=curl /home/curl_user/lib/koreader /usr/lib/koreader
+COPY --from=curl /home/curl_user/share/pixmaps/koreader.png /usr/share/selkies/www/icon.png
+EXPOSE 3000
+
+FROM ghcr.io/linuxserver/baseimage-selkies:debianbookworm@sha256:ff341d2de5ece02212cd5bdb94058d1e3ae4c73e1dd57dc67a62901796ad09b5 AS debian
 ENV \
     TITLE="Koreader" \
     START_DOCKER=false \
@@ -21,9 +36,9 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     iputils-ping \
     libsdl2-2.0-0 \
     # Set application to fullscreen
-    && sed -i 's|</applications>|  <application class="*">\n <fullscreen>yes</fullscreen>\n </application>\n</applications>|' /etc/xdg/openbox/rc.xml
+    && sed -i 's|</applications>|  <application class="*">\n <fullscreen>yes</fullscreen>\n </application>\n</applications>|' /etc/xdg/openbox/rc.xml \
+    && echo koreader > /defaults/autostart
 COPY --from=curl /home/curl_user/bin/koreader /usr/bin/koreader
 COPY --from=curl /home/curl_user/lib/koreader /usr/lib/koreader
 COPY --from=curl /home/curl_user/share/pixmaps/koreader.png /usr/share/selkies/www/icon.png
-RUN echo koreader > /defaults/autostart
 EXPOSE 3000

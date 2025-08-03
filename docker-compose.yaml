@@ -1,7 +1,9 @@
 services:
   koreader:
     image: ghcr.io/zephyros-dev/koreader:latest
-    build: . # Remove this line if you only use the image from the registry
+    build:
+      context: . # Remove this line if you only use the image from the registry
+      # target: fedora # Use this build stage if you use fedora-derivate distro
     ports:
       - "3000-3001:3000-3001"
     # volumes:
