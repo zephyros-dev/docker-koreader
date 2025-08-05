@@ -45,7 +45,7 @@ jobs:
             # set latest tag for default branch
             type=raw,value=${{ steps.koreader_version.outputs.version }}-fedora{{ steps.fedora_version.outputs.version }}
       - name: Build and push Docker image fedora
-        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
+        uses: docker/build-push-action@55146d969b0dff1a5c12630229609757af5b1081
         with:
           context: .
           push: true
@@ -67,7 +67,7 @@ jobs:
             type=raw,value=${{ steps.koreader_version.outputs.version }}
             type=raw,value=${{ steps.koreader_version.outputs.version }}-debian{{ steps.debian_version.outputs.version }}
       - name: Build and push Docker image debian
-        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
+        uses: docker/build-push-action@55146d969b0dff1a5c12630229609757af5b1081
         with:
           context: .
           push: true
