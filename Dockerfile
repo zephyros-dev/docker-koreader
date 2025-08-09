@@ -7,7 +7,7 @@ RUN \
     https://github.com/koreader/koreader/releases/download/${KOREADER_VERSION}/koreader-linux-${ARCH}-${KOREADER_VERSION}.tar.xz \
     && tar -xf koreader.tar.xz
 
-FROM ghcr.io/linuxserver/baseimage-selkies:fedora42@sha256:6fb5827c3984870d25fb985ab72fa20d31c34a04bb4a92e961e6788f01304398 AS fedora
+FROM ghcr.io/linuxserver/baseimage-selkies:fedora42@sha256:dff4c1f2d4840b5aa8963c6139bee055f829eb7f21474fdf3b440239091e3ae9 AS fedora
 ENV \
     TITLE="Koreader" \
     START_DOCKER=false \
