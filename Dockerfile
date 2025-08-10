@@ -22,7 +22,7 @@ COPY --from=curl /home/curl_user/lib/koreader /usr/lib/koreader
 COPY --from=curl /home/curl_user/share/pixmaps/koreader.png /usr/share/selkies/www/icon.png
 EXPOSE 3000
 
-FROM ghcr.io/linuxserver/baseimage-selkies:debianbookworm@sha256:e5f453b1479c39bba2ba1a21f843bdd260818befa9c3627ac8b2e4fca46caed8 AS debian
+FROM ghcr.io/linuxserver/baseimage-selkies:debianbookworm@sha256:1b76e383961d092dff6d99750e44861bbff5688e8afbd37718e93eea5587495f AS debian
 ENV \
     TITLE="Koreader" \
     START_DOCKER=false \
