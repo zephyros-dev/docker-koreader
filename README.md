@@ -14,8 +14,8 @@ The image name is `ghcr.io/zephyros-dev/koreader`. The following tags are suppor
 - `Koreader.version`: Specific version of Koreader. e.g: `v2023.06.1`
 - `Koreader.version-distro`: Version of Koreader along with distro:
 
-  - Debian example: `v2025.04-debianbookworm`
-  - Fedora example: `v2025.04-fedora42`
+  - Debian example: `v2025.04-debian`
+  - Fedora example: `v2025.04-fedora`
 
 ## Installation
 
