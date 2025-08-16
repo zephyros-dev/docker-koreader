@@ -1,6 +1,6 @@
 FROM docker.io/curlimages/curl:8.15.0@sha256:4026b29997dc7c823b51c164b71e2b51e0fd95cce4601f78202c513d97da2922 AS curl
 ARG ARCH='uname -m'
-ARG KOREADER_VERSION=v2025.04
+ARG KOREADER_VERSION=v2025.08
 RUN \
     export ARCH=$(eval ${ARCH}) \
     && curl -Lo koreader.tar.xz \
