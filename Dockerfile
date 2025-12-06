@@ -33,7 +33,7 @@ COPY --from=curl /home/curl_user/lib/koreader /usr/lib/koreader
 COPY --from=curl /home/curl_user/share/pixmaps/koreader.png /usr/share/selkies/www/icon.png
 EXPOSE 3000
 
-FROM ghcr.io/linuxserver/baseimage-selkies:debiantrixie@sha256:52869df379aa6fd22e666fb768ba39ed4c9c152bd74615a8a803cabaafa4331d AS debian
+FROM ghcr.io/linuxserver/baseimage-selkies:debiantrixie@sha256:3788efe74425dcd7eb999edb1d7a553cea86a685a4e68e469a4af08f1229c5d4 AS debian
 ENV \
     HARDEN_DESKTOP=True \
     HARDEN_OPENBOX=True \
