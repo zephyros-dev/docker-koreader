@@ -7,7 +7,7 @@ RUN \
     https://github.com/koreader/koreader/releases/download/${KOREADER_VERSION}/koreader-linux-${ARCH}-${KOREADER_VERSION}.tar.xz \
     && tar -xf koreader.tar.xz
 
-FROM ghcr.io/linuxserver/baseimage-selkies:fedora42@sha256:ad246110cd3917c26b1a5b77f4307218b172a78de9c01af1d5faa8a8f8966c6d AS fedora
+FROM ghcr.io/linuxserver/baseimage-selkies:fedora42@sha256:3e5c245f5f82910e967d8f02cf17657cfd940670b974af16b2e0ccf68538cae3 AS fedora
 ENV \
     HARDEN_DESKTOP=True \
     HARDEN_OPENBOX=True \
