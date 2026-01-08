@@ -1,4 +1,4 @@
-FROM docker.io/curlimages/curl:8.17.0@sha256:935d9100e9ba842cdb060de42472c7ca90cfe9a7c96e4dacb55e79e560b3ff40 AS curl
+FROM docker.io/curlimages/curl:8.18.0@sha256:5e058e1f726dd941b1db83ed6fad363e00d3aed1186cf9517b245fe111911921 AS curl
 ARG ARCH='uname -m'
 ARG KOREADER_VERSION=v2025.10
 RUN \
