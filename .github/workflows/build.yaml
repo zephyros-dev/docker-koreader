@@ -25,7 +25,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
       - name: Log in to the Container registry
-        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9
+        uses: docker/login-action@2e1345c05f9563db17b704b7855578af55a6c8be
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -38,14 +38,14 @@ jobs:
         run: echo "version=$(cat Dockerfile | grep -oP '(?<=fedora).+(?=@)')" >> $GITHUB_OUTPUT
       - name: Extract metadata (tags, labels) for Docker fedora
         id: meta_fedora
-        uses: docker/metadata-action@ed95091677497158a9ff38b314264cd965388d5e
+        uses: docker/metadata-action@a60f0f62b5c12316066c8db464bfb2faafd7907b
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             # set latest tag for default branch
             type=raw,value=${{ steps.koreader_version.outputs.version }}-fedora{{ steps.fedora_version.outputs.version }}
       - name: Build and push Docker image fedora
-        uses: docker/build-push-action@64c9b141502b80dbbd71e008a0130ad330f480f8
+        uses: docker/build-push-action@8c1e8f8e5bf845ba3773a14f3967965548a2341e
         with:
           context: .
           push: true
@@ -58,7 +58,7 @@ jobs:
         run: echo "version=$(cat Dockerfile | grep -oP '(?<=debian).+(?=@)')" >> $GITHUB_OUTPUT
       - name: Extract metadata (tags, labels) for Docker
         id: meta_debian
-        uses: docker/metadata-action@ed95091677497158a9ff38b314264cd965388d5e
+        uses: docker/metadata-action@a60f0f62b5c12316066c8db464bfb2faafd7907b
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
@@ -67,7 +67,7 @@ jobs:
             type=raw,value=${{ steps.koreader_version.outputs.version }}
             type=raw,value=${{ steps.koreader_version.outputs.version }}-debian{{ steps.debian_version.outputs.version }}
       - name: Build and push Docker image debian
-        uses: docker/build-push-action@64c9b141502b80dbbd71e008a0130ad330f480f8
+        uses: docker/build-push-action@8c1e8f8e5bf845ba3773a14f3967965548a2341e
         with:
           context: .
           push: true
