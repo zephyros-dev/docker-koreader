@@ -1,2 +1,2 @@
 [tools]
-pre-commit = "4.5.1"
+prek = "0.2.20"
