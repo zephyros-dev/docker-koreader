@@ -38,7 +38,7 @@ jobs:
         run: echo "version=$(cat Dockerfile | grep -oP '(?<=fedora).+(?=@)')" >> $GITHUB_OUTPUT
       - name: Extract metadata (tags, labels) for Docker fedora
         id: meta_fedora
-        uses: docker/metadata-action@030e881283bb7a6894de51c315a6bfe6a94e05cf
+        uses: docker/metadata-action@85e876bd3a78bcc6b9925c818c482e365cf13b71
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
@@ -58,7 +58,7 @@ jobs:
         run: echo "version=$(cat Dockerfile | grep -oP '(?<=debian).+(?=@)')" >> $GITHUB_OUTPUT
       - name: Extract metadata (tags, labels) for Docker
         id: meta_debian
-        uses: docker/metadata-action@030e881283bb7a6894de51c315a6bfe6a94e05cf
+        uses: docker/metadata-action@85e876bd3a78bcc6b9925c818c482e365cf13b71
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
