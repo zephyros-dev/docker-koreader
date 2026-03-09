@@ -38,14 +38,14 @@ jobs:
         run: echo "version=$(cat Dockerfile | grep -oP '(?<=fedora).+(?=@)')" >> $GITHUB_OUTPUT
       - name: Extract metadata (tags, labels) for Docker fedora
         id: meta_fedora
-        uses: docker/metadata-action@85e876bd3a78bcc6b9925c818c482e365cf13b71
+        uses: docker/metadata-action@f58488e2659d6b48d33bf75cb4af197793ce477f
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             # set latest tag for default branch
             type=raw,value=${{ steps.koreader_version.outputs.version }}-fedora{{ steps.fedora_version.outputs.version }}
       - name: Build and push Docker image fedora
-        uses: docker/build-push-action@d08e5c354a6adb9ed34480a06d141179aa583294
+        uses: docker/build-push-action@f64672cf50fa6f34ab7b194daf79d0161632a3ae
         with:
           context: .
           push: true
@@ -58,7 +58,7 @@ jobs:
         run: echo "version=$(cat Dockerfile | grep -oP '(?<=debian).+(?=@)')" >> $GITHUB_OUTPUT
       - name: Extract metadata (tags, labels) for Docker
         id: meta_debian
-        uses: docker/metadata-action@85e876bd3a78bcc6b9925c818c482e365cf13b71
+        uses: docker/metadata-action@f58488e2659d6b48d33bf75cb4af197793ce477f
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
@@ -67,7 +67,7 @@ jobs:
             type=raw,value=${{ steps.koreader_version.outputs.version }}
             type=raw,value=${{ steps.koreader_version.outputs.version }}-debian{{ steps.debian_version.outputs.version }}
       - name: Build and push Docker image debian
-        uses: docker/build-push-action@d08e5c354a6adb9ed34480a06d141179aa583294
+        uses: docker/build-push-action@f64672cf50fa6f34ab7b194daf79d0161632a3ae
         with:
           context: .
           push: true
