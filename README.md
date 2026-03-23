@@ -16,6 +16,7 @@ The image name is `ghcr.io/zephyros-dev/koreader`. The following tags are suppor
 
   - Debian example: `v2025.04-debian`
   - Fedora example: `v2025.04-fedora`
+- ARM64 support is WIP. You can try building the image yourself by following the [instruction](https://github.com/zephyros-dev/docker-koreader/issues/27#issuecomment-3690753223)
 
 ## Installation
 
