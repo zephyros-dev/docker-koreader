@@ -24,13 +24,11 @@ ENV \
 RUN --mount=type=cache,target=/var/cache/libdnf5,sharing=locked \
     dnf install -y \
     iputils \
-    # https://github.com/linuxserver/docker-baseimage-selkies/issues/100#issuecomment-3367806288
-    && echo -e "\ntrue" >> /etc/s6-overlay/s6-rc.d/init-selkies-config/run \
     && sed -i 's|</applications>|  <application class="*">\n <fullscreen>yes</fullscreen>\n </application>\n</applications>|' /etc/xdg/openbox/rc.xml \
+    && ln -s ../lib/koreader/koreader.sh /usr/bin/koreader \
     && echo koreader > /defaults/autostart
-COPY --from=curl /home/curl_user/bin/koreader /usr/bin/koreader
 COPY --from=curl /home/curl_user/lib/koreader /usr/lib/koreader
-COPY --from=curl /home/curl_user/share/pixmaps/koreader.png /usr/share/selkies/www/icon.png
+COPY --from=curl /home/curl_user/share/icons/hicolor/512x512/apps/koreader.png /usr/share/selkies/www/icon.png
 EXPOSE 3000
 
 FROM ghcr.io/linuxserver/baseimage-selkies:debiantrixie@sha256:481dad8f4e36b28126de92f15b170a2a90ca7cee67db143bc9854124afcdcdf7 AS debian
@@ -54,13 +52,10 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     && apt install -y \
     # For network connectivity
     iputils-ping \
-    libsdl2-2.0-0 \
-    # https://github.com/linuxserver/docker-baseimage-selkies/issues/100#issuecomment-3367806288
-    && echo "\ntrue" >> /etc/s6-overlay/s6-rc.d/init-selkies-config/run \
     # Set application to fullscreen
     && sed -i 's|</applications>|  <application class="*">\n <fullscreen>yes</fullscreen>\n </application>\n</applications>|' /etc/xdg/openbox/rc.xml \
+    && ln -s ../lib/koreader/koreader.sh /usr/bin/koreader \
     && echo koreader > /defaults/autostart
-COPY --from=curl /home/curl_user/bin/koreader /usr/bin/koreader
 COPY --from=curl /home/curl_user/lib/koreader /usr/lib/koreader
-COPY --from=curl /home/curl_user/share/pixmaps/koreader.png /usr/share/selkies/www/icon.png
+COPY --from=curl /home/curl_user/share/icons/hicolor/512x512/apps/koreader.png /usr/share/selkies/www/icon.png
 EXPOSE 3000
