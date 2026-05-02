@@ -31,7 +31,7 @@ COPY --from=curl /home/curl_user/lib/koreader /usr/lib/koreader
 COPY --from=curl /home/curl_user/share/icons/hicolor/512x512/apps/koreader.png /usr/share/selkies/www/icon.png
 EXPOSE 3000
 
-FROM ghcr.io/linuxserver/baseimage-selkies:debiantrixie@sha256:a7721c4d9c2c274d43fd42c6f32c20adb1c3035606a06a5c2608ed11e6893f2e AS debian
+FROM ghcr.io/linuxserver/baseimage-selkies:debiantrixie@sha256:8c7df8910b2914d44976e57ec4e4ab9bf0799b9e750dd7a395897e762f3d4e60 AS debian
 ENV \
     HARDEN_DESKTOP=True \
     HARDEN_OPENBOX=True \
