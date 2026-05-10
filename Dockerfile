@@ -21,9 +21,8 @@ ENV \
     SELKIES_MICROPHONE_ENABLED=False \
     START_DOCKER=False \
     TITLE="Koreader"
-RUN \\
-    # Set application to fullscreen
-    sed -i 's|</applications>|  <application class="*">\n <fullscreen>yes</fullscreen>\n </application>\n</applications>|' /etc/xdg/openbox/rc.xml \
+# Set application to fullscreen
+RUN sed -i 's|</applications>|  <application class="*">\n <fullscreen>yes</fullscreen>\n </application>\n</applications>|' /etc/xdg/openbox/rc.xml \
     && ln -s ../lib/koreader/koreader.sh /usr/bin/koreader \
     && echo koreader > /defaults/autostart
 COPY --from=curl /home/curl_user/lib/koreader /usr/lib/koreader
