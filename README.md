@@ -12,10 +12,6 @@ The image name is `ghcr.io/zephyros-dev/koreader`. The following tags are suppor
 
 - `latest`: Latest version built on the main branch
 - `Koreader.version`: Specific version of Koreader. e.g: `v2023.06.1`
-- `Koreader.version-distro`: Version of Koreader along with distro:
-
-  - Debian example: `v2025.04-debian`
-  - Fedora example: `v2025.04-fedora`
 
 ## Installation
 
@@ -33,7 +29,6 @@ The image name is `ghcr.io/zephyros-dev/koreader`. The following tags are suppor
 
 - The image is based on [linuxserver/baseimage-selkies](https://github.com/linuxserver/docker-baseimage-selkies). See the base image for more configurations options.
 - The koreader configurations can be found in `/config/.config/koreader` inside the container.
-- For user with Fedora native distro and Nvidia GPU, you will need to use the fedora image tag for the NVENC to work.
 
 ### Renovate autoupdate
 

@@ -33,31 +33,8 @@ jobs:
       - name: Get Koreader version
         id: koreader_version
         run: echo "version=$(cat Dockerfile | grep -oP '(?<=ARG KOREADER_VERSION=).+(?=)')" >> $GITHUB_OUTPUT
-      - name: Get fedora version
-        id: fedora_version
-        run: echo "version=$(cat Dockerfile | grep -oP '(?<=fedora).+(?=@)')" >> $GITHUB_OUTPUT
-      - name: Extract metadata (tags, labels) for Docker fedora
-        id: meta_fedora
-        uses: docker/metadata-action@c3b064c6d7c32446d6bc214ea075f1caad2de35a
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            # set latest tag for default branch
-            type=raw,value=${{ steps.koreader_version.outputs.version }}-fedora{{ steps.fedora_version.outputs.version }}
-      - name: Build and push Docker image fedora
-        uses: docker/build-push-action@ef1fb9688fc3626d0fd5e462f502cbbdc6456feb
-        with:
-          context: .
-          push: true
-          platforms: linux/amd64
-          target: fedora
-          tags: ${{ steps.meta_fedora.outputs.tags }}
-          labels: ${{ steps.meta_fedora.outputs.labels }}
-      - name: Get debian version
-        id: debian_version
-        run: echo "version=$(cat Dockerfile | grep -oP '(?<=debian).+(?=@)')" >> $GITHUB_OUTPUT
       - name: Extract metadata (tags, labels) for Docker
-        id: meta_debian
+        id: tags
         uses: docker/metadata-action@c3b064c6d7c32446d6bc214ea075f1caad2de35a
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
@@ -65,12 +42,11 @@ jobs:
             # set latest tag for default branch
             type=raw,value=latest,enable={{ is_default_branch }}
             type=raw,value=${{ steps.koreader_version.outputs.version }}
-            type=raw,value=${{ steps.koreader_version.outputs.version }}-debian{{ steps.debian_version.outputs.version }}
-      - name: Build and push Docker image debian
+      - name: Build and push Docker image
         uses: docker/build-push-action@ef1fb9688fc3626d0fd5e462f502cbbdc6456feb
         with:
           context: .
           push: true
           platforms: linux/amd64
-          tags: ${{ steps.meta_debian.outputs.tags }}
-          labels: ${{ steps.meta_debian.outputs.labels }}
+          tags: ${{ steps.tags.outputs.tags }}
+          labels: ${{ steps.tags.outputs.labels }}
