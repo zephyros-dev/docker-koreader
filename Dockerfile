@@ -7,7 +7,7 @@ RUN \
     https://github.com/koreader/koreader/releases/download/${KOREADER_VERSION}/koreader-linux-${ARCH}-${KOREADER_VERSION}.tar.xz \
     && tar -xf koreader.tar.xz
 
-FROM ghcr.io/linuxserver/baseimage-selkies:debiantrixie@sha256:fcb9cbc35c4f9fcf8c8d130674e8a9e640810ae73411d1ad6682caddd421a691
+FROM ghcr.io/linuxserver/baseimage-selkies:debiantrixie@sha256:209c5078cda945b7160b31a6409088f0c1e3d6f99a8301066edc9de9f4ef7740
 ENV \
     HARDEN_DESKTOP=True \
     HARDEN_OPENBOX=True \
