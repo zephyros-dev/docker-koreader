@@ -1,8 +1,12 @@
-FROM docker.io/curlimages/curl:8.23.0@sha256:3fb7e13e5d179a845c97d78204f3f1064d1907037f26a3ebf91710571151fd93 AS curl
-ARG ARCH='uname -m'
+FROM --platform=$BUILDPLATFORM docker.io/curlimages/curl:8.23.0@sha256:3fb7e13e5d179a845c97d78204f3f1064d1907037f26a3ebf91710571151fd93 AS curl
+ARG TARGETARCH
 ARG KOREADER_VERSION=v2026.03
 RUN \
-    export ARCH=$(eval ${ARCH}) \
+    case "${TARGETARCH}" in \
+    amd64) ARCH=x86_64 ;; \
+    arm64) ARCH=arm64 ;; \
+    *) echo "Unsupported architecture: ${TARGETARCH}" >&2; exit 1 ;; \
+    esac \
     && curl -Lo koreader.tar.xz \
     https://github.com/koreader/koreader/releases/download/${KOREADER_VERSION}/koreader-linux-${ARCH}-${KOREADER_VERSION}.tar.xz \
     && tar -xf koreader.tar.xz

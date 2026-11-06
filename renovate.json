@@ -10,7 +10,7 @@
   "packageRules": [
     {
       "ignoreTests": false,
-      "matchPackagePatterns": "koreader"
+      "matchPackageNames": ["/koreader/"]
     },
     {
       "groupName": "docker-action",
