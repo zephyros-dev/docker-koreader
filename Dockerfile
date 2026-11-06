@@ -1,6 +1,6 @@
 FROM --platform=$BUILDPLATFORM docker.io/curlimages/curl:8.23.0@sha256:3fb7e13e5d179a845c97d78204f3f1064d1907037f26a3ebf91710571151fd93 AS curl
 ARG TARGETARCH
-ARG KOREADER_VERSION=v2026.03
+ARG KOREADER_VERSION=v2026.07.1
 RUN \
     case "${TARGETARCH}" in \
     amd64) ARCH=x86_64 ;; \
@@ -30,5 +30,5 @@ RUN sed -i 's|</applications>|  <application class="*">\n <fullscreen>yes</fulls
     && ln -s ../lib/koreader/koreader.sh /usr/bin/koreader \
     && echo koreader > /defaults/autostart
 COPY --from=curl /home/curl_user/lib/koreader /usr/lib/koreader
-COPY --from=curl /home/curl_user/share/icons/hicolor/512x512/apps/koreader.png /usr/share/selkies/www/icon.png
+COPY --from=curl /home/curl_user/share/icons/hicolor/512x512/apps/rocks.koreader.KOReader.png /usr/share/selkies/www/icon.png
 EXPOSE 3000
